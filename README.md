@@ -10,7 +10,7 @@ Configuring:
 
 - Zipkin Docker
 
-Observation
+Observation:
 
 - there are 2 copies of a main-service
 
