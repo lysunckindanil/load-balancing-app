@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.StringJoiner;
-
 @RestController
 public class TestController {
     private final RestTemplate restTemplate;
@@ -18,10 +16,10 @@ public class TestController {
 
     @GetMapping("/{quantity}")
     public String index(@PathVariable int quantity) {
-        StringJoiner stringJoiner = new StringJoiner("\n");
+        StringBuilder builder = new StringBuilder();
         for (int i = 0; i < quantity; i++) {
-            stringJoiner.add(restTemplate.getForObject(baseUrl, String.class));
+            builder.append("<p>").append(restTemplate.getForObject(baseUrl, String.class)).append("</p>\n");
         }
-        return stringJoiner.toString();
+        return builder.toString();
     }
 }
